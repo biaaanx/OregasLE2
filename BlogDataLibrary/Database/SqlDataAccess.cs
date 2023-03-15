@@ -29,7 +29,7 @@ namespace BlogDataLibrary.Database
                 commandType = CommandType.StoredProcedure;
             }
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            using (IDbConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog = BlogDB; Integrated Security=True;Connect Timeout=60;"))
             {
                 List<T> rows = connection.Query<T>(sqlStatement, parameters,
                     commandType: commandType).ToList();
@@ -47,7 +47,7 @@ namespace BlogDataLibrary.Database
             {
                 commandType = CommandType.StoredProcedure;
             }
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            using (IDbConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog = BlogDB; Integrated Security=True;Connect Timeout=60;"))
             {
                 connection.Execute(sqlStatement, parameters, commandType: commandType);
             }
